@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>MY HEALTH</h1>
+        <h2>운동 기록하기</h2>
+    </header>
+    <main id="join">
+        <p>회원가입하기</p>
+        <form id="joinForm">
+            <div class="join-id">
+                <input type="text" id="userId" placeholder="아이디를 입력하세요." maxlength="15" required value="dust"/>
+                <input type="password" id="userPw" placeholder="비밀번호를 입력하세요." maxlength="10" required value="1234"/>
+                <a class="warn">특문포함 10자까지 가능</a>
+                <input type="submit" value="다음"/>
+            </div>
+            <div class="select-box hidden">
+                <p>성별</p>
+                <div class="flex-center">
+                    <select id="gender">
+                        <option>여자</option>
+                        <option>남자</option>
+                        <option>선택안함</option>
+                    </select>
+                </div>
+                <p>몸무게</p>
+                <div class="flex-center">
+                    <select id="weight"></select>
+                    <p>kg</p>
+                </div>
+                <p>키</p>
+                <div class="flex-center">
+                    <select id="height"></select>
+                    <div>cm</div>
+                </div>
+                <p>생년월일</p>
+                <div class="flex-center">
+                    <select id="year"></select>
+                    <select id="month"></select>
+                    <select id="day"></select>
+                </div>
+                <input type="submit" id="joinBtn" value="가입하기"/>
+            </div>
+        </form>
+
+        <a href="index.html" class="login-page-go">
+            이미 계정이 있으신가요? <span class="inform">로그인</span>
+        </a>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
+<script src="js/join.js"></script>
+<script src="js/select.js"></script>

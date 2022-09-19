@@ -12,24 +12,19 @@
         <h1>MY HEALTH</h1>
         <h2>운동 기록하기</h2>
     </header>
-    <main id="join">
-        <!-- <p>회원가입하기</p> -->
+    <main id="login">
         <div id="userInfo"></div>
-        <form id="joinForm">
+        <form id="loginForm">
             <input type="text" id="userId" placeholder="아이디를 입력하세요." maxlength="15"/>
             <p class="warn hidden">아이디 및 비밀번호가 일치하지 않습니다.</p>
-            <input type="password" id="userPw" placeholder="비밀번호를 입력하세요."/>
+            <input type="password" id="userPw" placeholder="비밀번호를 입력하세요." maxlength="10"/>
             <a class="warn hidden">비밀번호 까먹었어요?</a>
             <button type="button" id="nextBtn">다음</button>
         </form>
-
-        <p class="enter">
-            이미 계정이 있으신가요? <span class="inform">로그인</span>
-        </p>
     </main>
     <footer>
 
     </footer>
 </body>
 </html>
-<script src="js/join.js"></script>
+<script src="js/login.js"></script>

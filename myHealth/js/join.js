@@ -1,41 +1,51 @@
 const form = document.querySelector("#joinForm");
-const info = document.querySelector("#userInfo");
-
 const formId = document.querySelector("#userId");
 const formPw = document.querySelector("#userPw");
-const nextBtn = document.querySelector("#nextBtn");
+const input = document.querySelector("#joinForm input:last-child");
 
-// Login ID 임시
-const userId = "dust";
-const userPw = "1234";
-
-// login 유지
+const selectArea = document.querySelector(".select-box");
 
 
-// Login
-function login(){
+// 회원가입 id, pw 저장하기
+function inputId(event){
+    const inputId = event.target.value;
+    localStorage.setItem("userId", inputId);
+}
+function inputPw(event){
+    const inputPw = event.target.value;
+    localStorage.setItem("userPw", inputPw);
+}
+formId.addEventListener("input", inputId);
+formPw.addEventListener("input", inputPw);
+
+// 아이디 입력 후 기본값으로 이동
+function nextPage(event){
+    event.preventDefault();
+    
     const inputId = formId.value;
     const inputPw = formPw.value;
-    const h2 = document.createElement("h2");
 
-    if(userId == inputId){
-        if(userPw == inputPw){
-            alert("로그인 되었습니다!");
-            form.classList.add("hidden");
-            info.appendChild(h2);
-            h2.innerText = `${inputId}님 환영합니다!`
-
-            localStorage.setItem("userId", userId);
-            localStorage.setItem("userPw", userPw);
+    if(inputId.length >= 4){
+        if(inputPw.length >= 4){
+            const idArea = document.querySelector(".join-id");
+            idArea.classList.add("hidden");
+            selectArea.classList.remove("hidden");
         }else{
-            alert("비밀번호를 확인해주세요.")
+            alert("비밀번호를 확인해주세요.");
         }
     }else{
-        alert("아이디와 비밀번호를 확인해주세요.")
+        alert("아이디 및 비밀번호를 확인해주세요.");
     }
+
+    // 기본 값 입력 후 버튼 생성 만들어야함
+    const testSelect = selectArea.querySelectorAll("select");
+    // console.log(testSelect);
+    
 }
-nextBtn.addEventListener("click", login);
+input.addEventListener("click", nextPage);
 
 
+// select된 값 배열에 넣기
+const userInfoArr = new Array();
 
 
