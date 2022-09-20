@@ -71,6 +71,7 @@ footer ul{
     display: none;
 }
 .flex{
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -83,6 +84,9 @@ footer ul{
 .warn{
     color: tomato;
     font-size: 12px;
+}
+.red{
+    color: tomato;
 }
 .inform{
     color: rgb(66, 177, 177);
@@ -112,4 +116,25 @@ main input{
 /* 회원가입 */
 .select-box{
     text-align: center;
+}
+/* 운동상세페이지 */
+.exercise_list{
+    width: 100%;
+}
+.exercise_list li{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.exercise_list li label{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.exercise_list li input{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
 }
