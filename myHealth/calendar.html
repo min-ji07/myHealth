@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- fullcalendar 언어 CDN -->  
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />  
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>  
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+</head>
+<body>
+    <!-- 헤더는 html에서 읽히게만하고 숨겨놔도 될 것 같음 -->
+    <header class="">
+        <h1>MY HEALTH</h1>
+    </header>
+    <main>
+        <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>
+        <a href="#" 
+        style="display:block; width: 100%; line-height: 50px; text-align: center; margin-top: 10px; border: 1px solid black; height: 50px; border-radius: 10px;">
+        운동 기록하기(캘린더 클릭하면 나오긴하지만 어쨌든 임시로)</a>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="main.html">홈</a></li>
+            <li><a href="calendar.html">캘린더</a></li>
+            <li><a href="detail.html">상세</a></li>
+            <li><a href="mypage.html">마이페이지</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let calendarEl = document.getElementById("calendar");
+        let calendar = new FullCalendar.Calendar(calendarEl, {
+            expandRows: true,   //  화면에 맞게 높이 재설정
+            slotMinTime: '08:00',   // day 캘린더에서 시작 시간
+            slotMaxTime: '20:00',   // 종료 시간
+            // 헤더 표시 툴바
+            headerToolbar:{
+                // left에 next추가하면 왼쪽에 next 버튼 추가 됨
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+                // 월, 주 등등
+                // dayGridMonth, timeGridWeek, timeGridDay, listWeek
+            },
+            initialView: 'dayGridMonth',    // 초기 로드시 캘린더 화면(기본설정 달)
+            initialDate: '2022-01-01',      // 초기 날짜 설정(안하면 오늘날짜 기본)
+            navLinks: true, // 날짜 선택시 day 캘린더나 week 캘린더로 링크
+            editable: true, // 수정가능?
+            selectable: true, // 달력 일자 드래그 설정가능
+            nowIndicator: true, // 현재 시간 마크
+            dayMaxEvents: true, // 이벤트가 오버되면 높이 제산 (몇개정도 표현?)
+            locale: 'ko', // 한국어 설정
+            eventAdd: function(obj){ // 이벤트가 추가되면 발생하는 이벤트
+                console.log(obj);
+            },
+            eventChange: function(obj){ // 수정
+                console.log(obj);
+            },
+            eventRemove: function(obj){ // 삭제
+                console.log(obj);
+            },
+            select: function(arg){ // 캘린더에서 드래그로 이벤트 설정
+                let title = prompt("Event Title:");
+                if(title){
+                    calendar.addEvent({
+                        title: title,
+                        start: arg.start,
+                        end: arg.end,
+                        allDay: arg.allDay
+                    })
+                }
+                calendar.unselect()
+            }
+            // events:{
+            //     title:'이벤트생성',
+            //     start:'2022-01-01',
+            //     end:'2022-01-20'
+            // }
+        });
+        calendar.render();
+    })
+</script>
+
