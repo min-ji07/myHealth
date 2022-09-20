@@ -30,6 +30,9 @@ function nextPage(event){
             const idArea = document.querySelector(".join-id");
             idArea.classList.add("hidden");
             selectArea.classList.remove("hidden");
+
+            // 여기에 select.js
+            // optionPlus()를 넣어도 되지않을까
         }else{
             alert("비밀번호를 확인해주세요.");
         }
